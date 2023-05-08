@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 class AppTheme {
 
   static const primaryColor = Color(0xFF7b61ff);
+  static const greyColor = Colors.grey;
 
   ThemeData getTheme() => ThemeData(
     useMaterial3: true,
