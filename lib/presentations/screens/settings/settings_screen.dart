@@ -6,9 +6,16 @@ class SettingsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isDarkmode = false;
     return Scaffold(
-      appBar: const AppBarWidget(
+      appBar: AppBarWidget(
         nameScreen: 'Ajustes',
+        actions: [
+          IconButton(
+            icon: Icon( isDarkmode ? Icons.dark_mode_outlined : Icons.light_mode_outlined ),
+            onPressed: () {},
+          )
+        ],
       ),
       body: Column(
         children: [

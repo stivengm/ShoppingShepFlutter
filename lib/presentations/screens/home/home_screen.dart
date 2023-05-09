@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:shopping_shep_flutter/config/theme/app_theme.dart';
 import 'package:shopping_shep_flutter/presentations/widgets/app_bar_widget.dart';
+import 'package:shopping_shep_flutter/presentations/widgets/discount_widget.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({ Key? key }) : super( key: key );
@@ -19,7 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
     final List<Widget> actionsHome = [
       IconButton(
         icon: SvgPicture.asset('assets/notification.svg', width: 30.0,),
-        onPressed: () => context.push("/settings"),
+        onPressed: () => context.push("/notifications"),
       )
     ];
 
@@ -40,12 +41,12 @@ class _HomeScreenState extends State<HomeScreen> {
         physics: const NeverScrollableScrollPhysics(),
         controller: pageController,
         scrollDirection: Axis.horizontal,
-        children: const [
-          Text("Hola"),
-          Text("Mundo"),
-          Text("Mundo"),
-          Text("Mundo"),
-          Text("Mundo"),
+        children: [
+          _body(), 
+          const Text("Mundo"),
+          const Text("Mundo"),
+          const Text("Mundo"),
+          const Text("Mundo"),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
@@ -93,4 +94,15 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
+
+  Widget _body() {
+    return SingleChildScrollView(
+      child: Column(
+        children: const [
+          DiscountWidget()
+        ],
+      ),
+    );
+  }
+
 }
