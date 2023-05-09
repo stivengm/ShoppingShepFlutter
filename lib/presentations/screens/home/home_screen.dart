@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shopping_shep_flutter/config/theme/app_theme.dart';
 import 'package:shopping_shep_flutter/presentations/screens/home/widgets/home_skeleton_widget.dart';
+import 'package:shopping_shep_flutter/presentations/widgets/app_bar_widget.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({ Key? key }) : super( key: key );
@@ -14,16 +15,25 @@ class _HomeScreenState extends State<HomeScreen> {
   int currentIndex = 0;
   @override
   Widget build(BuildContext context) {
+    final List<Widget> actionsHome = [
+      IconButton(
+        icon: SvgPicture.asset('assets/notification.svg', width: 30.0,),
+        onPressed: () => Navigator.pushNamed(context, 'settings'),
+      )
+    ];
+
+    final List<Widget> actionsAccount = [
+      IconButton(
+        icon: SvgPicture.asset('assets/settings.svg', width: 30.0, colorFilter: const ColorFilter.mode(AppTheme.blackColor, BlendMode.srcIn)),
+        onPressed: () => Navigator.pushNamed(context, 'settings'),
+      )
+    ];
+
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("ShoppingShep"),
+      appBar: AppBarWidget(
+        nameScreen: 'ShoppingShep',
         centerTitle: false,
-        actions: [
-          IconButton(
-            icon: SvgPicture.asset('assets/notification.svg', width: 30.0),
-            onPressed: () {}
-          )
-        ],
+        actions: currentIndex == 4 ? actionsAccount : actionsHome
       ),
       body: const HomeSkeletonWidget(),
       bottomNavigationBar: BottomNavigationBar(
