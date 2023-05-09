@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:shopping_shep_flutter/config/theme/app_theme.dart';
+import 'package:shopping_shep_flutter/presentations/screens/auth/account/account_screen.dart';
+import 'package:shopping_shep_flutter/presentations/screens/cart/cart_screen.dart';
+import 'package:shopping_shep_flutter/presentations/screens/categories/categories_screen.dart';
 import 'package:shopping_shep_flutter/presentations/widgets/app_bar_widget.dart';
 import 'package:shopping_shep_flutter/presentations/widgets/discount_widget.dart';
 
@@ -43,10 +46,10 @@ class _HomeScreenState extends State<HomeScreen> {
         scrollDirection: Axis.horizontal,
         children: [
           _body(), 
+          const CategoriesScreen(),
           const Text("Mundo"),
-          const Text("Mundo"),
-          const Text("Mundo"),
-          const Text("Mundo"),
+          const CartScreen(),
+          const AccountScreen(),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
