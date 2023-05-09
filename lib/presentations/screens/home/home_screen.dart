@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shopping_shep_flutter/config/theme/app_theme.dart';
+import 'package:shopping_shep_flutter/presentations/screens/home/widgets/home_skeleton_widget.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({ Key? key }) : super( key: key );
@@ -15,9 +16,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: const Center(
-        child: Text("Hola mundo"),
-      ),
+      body: const HomeSkeletonWidget(),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentIndex,
         onTap: (value) {
