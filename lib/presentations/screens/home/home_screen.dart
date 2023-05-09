@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:shopping_shep_flutter/config/theme/app_theme.dart';
-import 'package:shopping_shep_flutter/presentations/screens/home/widgets/home_skeleton_widget.dart';
 import 'package:shopping_shep_flutter/presentations/widgets/app_bar_widget.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -12,20 +12,21 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  PageController pageController = PageController();
   int currentIndex = 0;
   @override
   Widget build(BuildContext context) {
     final List<Widget> actionsHome = [
       IconButton(
         icon: SvgPicture.asset('assets/notification.svg', width: 30.0,),
-        onPressed: () => Navigator.pushNamed(context, 'settings'),
+        onPressed: () => context.push("/settings"),
       )
     ];
 
     final List<Widget> actionsAccount = [
       IconButton(
         icon: SvgPicture.asset('assets/settings.svg', width: 30.0, colorFilter: const ColorFilter.mode(AppTheme.blackColor, BlendMode.srcIn)),
-        onPressed: () => Navigator.pushNamed(context, 'settings'),
+        onPressed: () => context.push("/settings"),
       )
     ];
 
@@ -35,13 +36,25 @@ class _HomeScreenState extends State<HomeScreen> {
         centerTitle: false,
         actions: currentIndex == 4 ? actionsAccount : actionsHome
       ),
-      body: const HomeSkeletonWidget(),
+      body: PageView(
+        physics: const NeverScrollableScrollPhysics(),
+        controller: pageController,
+        scrollDirection: Axis.horizontal,
+        children: const [
+          Text("Hola"),
+          Text("Mundo"),
+          Text("Mundo"),
+          Text("Mundo"),
+          Text("Mundo"),
+        ],
+      ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentIndex,
         onTap: (value) {
           setState(() {
             currentIndex = value;
           });
+          pageController.animateToPage(value, duration: const Duration(milliseconds: 250), curve: Curves.easeOut);
         },
         type: BottomNavigationBarType.shifting,
         selectedItemColor: AppTheme.primaryColor,
