@@ -15,7 +15,16 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: const Text("ShoppingShep"),
+        centerTitle: false,
+        actions: [
+          IconButton(
+            icon: SvgPicture.asset('assets/notification.svg', width: 30.0),
+            onPressed: () {}
+          )
+        ],
+      ),
       body: const HomeSkeletonWidget(),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentIndex,
